@@ -23,7 +23,7 @@ init -1 python hide:
     ## Это управляет заголовком окна, когда Ren'Py
     ## запущен в оконном режиме.
 
-    config.window_title = u"Cataclysm"
+    config.window_title = u"Катаклизм"
 
     # Эти управляют именем и версией игры, которые указываются
     # в журналах отладки.
@@ -39,44 +39,44 @@ init -1 python hide:
     ## Функция темы берет несколько параметров, которые
     ## настраивают цветовую схему.
 
-    theme.roundrect(
-        ## Theme: Roundrect
-        ## Color scheme: White Chocolate
+    theme.tv(
+        ## Theme: TV
+        ## Color scheme: Colorblind
 
         ## The color of an idle widget face.
-        widget = "#33271C",
+        widget = "#898989",
 
         ## The color of a focused widget face.
-        widget_hover = "#ECE7C4",
+        widget_hover = "#464646",
 
         ## The color of the text in a widget.
-        widget_text = "#B99D83",
+        widget_text = "#CCCCCC",
 
         ## The color of the text in a selected widget. (For
         ## example, the current value of a preference.)
-        widget_selected = "#ffffff",
+        widget_selected = "#F2F2F2",
 
         ## The color of a disabled widget face.
-        disabled = "#614D3A",
+        disabled = "#898989",
 
         ## The color of disabled widget text.
-        disabled_text = "#80654D",
+        disabled_text = "#666666",
 
         ## The color of informational labels.
-        label = "#F1EBE5",
+        label = "#c2c2c2",
 
         ## The color of a frame containing widgets.
-        frame = "#926841",
+        frame = "#252525",
 
         ## The background of the main menu. This can be a color
         ## beginning with '#', or an image filename. The latter
         ## should take up the full height and width of the screen.
-        mm_root = "#FBF9EA",
+        mm_root = "#393939",
 
         ## The background of the game menu. This can be a color
         ## beginning with '#', or an image filename. The latter
         ## should take up the full height and width of the screen.
-        gm_root = "#FBF9EA",
+        gm_root = "#393939",
 
         ## If this is True, the in-game window is rounded. If False,
         ## the in-game window is square.
@@ -275,7 +275,7 @@ init -1 python hide:
 
     ## Скорость текста по умолчанию, в знаках в секунду. 0 - бесконечность.
 
-    config.default_text_cps = 0
+    config.default_text_cps = 10
 
     ## Время авто-режима по умолчанию.
 
@@ -283,3 +283,68 @@ init -1 python hide:
 
     #########################################
     ## Остальные настройки могут быть ниже.
+
+
+## This section contains information about how to build your project into
+## distribution files.
+init python:
+
+    ## The name that's used for directories and archive files. For example, if
+    ## this is 'mygame-1.0', the windows distribution will be in the
+    ## directory 'mygame-1.0-win', in the 'mygame-1.0-win.zip' file.
+    build.directory_name = "cataclysm-1.0"
+
+    ## The name that's uses for executables - the program that users will run
+    ## to start the game. For example, if this is 'mygame', then on Windows,
+    ## users can click 'mygame.exe' to start the game.
+    build.executable_name = "cataclysm"
+
+    ## If True, Ren'Py will include update information into packages. This
+    ## allows the updater to run.
+    build.include_update = False
+
+    ## File patterns:
+    ##
+    ## The following functions take file patterns. File patterns are case-
+    ## insensitive, and matched against the path relative to the base
+    ## directory, with and without a leading /. If multiple patterns match,
+    ## the first is used.
+    ##
+    ##
+    ## In a pattern:
+    ##
+    ## /
+    ##     Is the directory separator.
+    ## *
+    ##     Matches all characters, except the directory separator.
+    ## **
+    ##     Matches all characters, including the directory separator.
+    ##
+    ## For example:
+    ##
+    ## *.txt
+    ##     Matches txt files in the base directory.
+    ## game/**.ogg
+    ##     Matches ogg files in the game directory or any of its subdirectories.
+    ## **.psd
+    ##    Matches psd files anywhere in the project.
+
+    ## Classify files as None to exclude them from the built distributions.
+
+    build.classify('**~', None)
+    build.classify('**.bak', None)
+    build.classify('**/.**', None)
+    build.classify('**/#**', None)
+    build.classify('**/thumbs.db', None)
+
+    ## To archive files, classify them as 'archive'.
+
+    # build.classify('game/**.png', 'archive')
+    # build.classify('game/**.jpg', 'archive')
+
+    ## Files matching documentation patterns are duplicated in a mac app
+    ## build, so they appear in both the app and the zip file.
+
+    build.documentation('*.html')
+    build.documentation('*.txt')
+    
