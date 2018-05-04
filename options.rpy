@@ -50,7 +50,7 @@ init -1 python hide:
         widget_hover = "#464646",
 
         ## The color of the text in a widget.
-        widget_text = "#CCCCCC",
+        widget_text = "#333333",
 
         ## The color of the text in a selected widget. (For
         ## example, the current value of a preference.)
